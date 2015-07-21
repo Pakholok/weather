@@ -5,10 +5,7 @@
 body {
 	padding-bottom: 0;
 	color: #5a5a5a;
-	background-image:url(../img/navbar.png);
-	background-repeat:repeat;
 }
-
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
@@ -113,4 +110,10 @@ footer p a, footer p a:hover, footer p a:visited  {
 }
 .navbar-brand, .navbar-collapse.collapse, .navbar-nav li, .navbar li a  {
 	height: 35px;
+}
+.container.marketing {
+	width:100%;
+	background-image:url(../img/navbar.png);
+	background-repeat:repeat;
+	padding:0 220px 0;
 }
