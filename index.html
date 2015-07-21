@@ -4,40 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-	<link href="assets/img/shortcut.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	
-<!-- 	<script type="text/javascript">
-	function carouselNormalization() {
-	var items = $('#carousel-example-generic .item'), //grab all slides
-		heights = [], //create empty array to store height values
-		tallest; //create variable to make note of the tallest slide
-
-	if (items.length) {
-		function normalizeHeights() {
-			items.each(function() { //add heights to array
-				heights.push($(this).height()); 
-			});
-			tallest = Math.max.apply(null, heights); //cache largest value
-			items.each(function() {
-				$(this).css('min-height',tallest + 'px');
-			});
-		};
-		normalizeHeights();
-
-    $(window).on('resize orientationchange', function () {
-        tallest = 0, heights.length = 0; //reset vars
-        items.each(function() {
-            $(this).css('min-height','0'); //reset min-height
-        }); 
-        normalizeHeights(); //run it again 
-    });
-}
-}
-	</script> -->
+	<link href="assets/img/shortcut.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	
     <title>Weather Forecast</title>
 
@@ -66,21 +34,31 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
+				<li class="text-center"><a href="#myModal" role="button" data-toggle="modal">Contact Us</a></li>
+					<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">We'd Love to Hear From You</h3>
+						  </div>
+						  <div class="modal-body">
+							<form class="form-horizontal col-sm-12">
+							  <div class="form-group"><label>Name</label><input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text"></div>
+							  <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Your message here.." data-placement="top" data-trigger="manual"></textarea></div>
+							  <div class="form-group"><label>E-Mail</label><input class="form-control email" placeholder="email@you.com (so that we can contact you)" data-placement="top" data-trigger="manual" data-content="Must be a valid e-mail address (user@gmail.com)" type="text"></div>
+							  <div class="form-group"><label>Phone</label><input class="form-control phone" placeholder="999-999-9999" data-placement="top" data-trigger="manual" data-content="Must be a valid phone number (999-999-9999)" type="text"></div>
+							  <div class="form-group"><button type="submit" class="btn btn-success pull-right">Send It!</button> <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not valid. </p></div>
+							</form>
+						  </div>
+						  <div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+						  </div>
+						</div>
+					  </div>
+					</div>
               </ul>
             </div>
           </div>
@@ -95,7 +73,7 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="0" class="active" title="Today"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
         <li data-target="#myCarousel" data-slide-to="3"></li>
@@ -105,78 +83,91 @@
       </ol>
       <div class="carousel-inner" role="listbox">
 	  
-	  
         <div class="item active">
-          <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+          <img id="day1_img" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-            </div>
+              <div class="city">Please allow browser to use your geolocation</div>
+              <div id="day1_time"></div>
+			  <div id="day1_icon"></div>
+              <div id="day1_temp"></div>
+			  <div id="day1_descr"></div>
+			</div>
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+          <img id="day2_img" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-            </div>
+              <div class="city">Please allow browser to use your geolocation</div>
+              <div id="day2_time"></div>
+			  <div id="day2_icon"></div>
+              <div id="day2_temp"></div>
+			  <div id="day2_descr"></div>
+			</div>
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+          <img id="day3_img" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
-          </div>
-        </div>
-	  <div class="item">
-          <img class="fourth-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Fourth slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
+              <div class="city">Please allow browser to use your geolocation</div>
+              <div id="day3_time"></div>
+			  <div id="day3_icon"></div>
+              <div id="day3_temp"></div>
+			  <div id="day3_descr"></div>
+			</div>
           </div>
         </div>
         <div class="item">
-          <img class="fifth-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Fifth slide">
+          <img id="day4_img" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
+              <div class="city">Please allow browser to use your geolocation</div>
+              <div id="day4_time"></div>
+			  <div id="day4_icon"></div>
+              <div id="day4_temp"></div>
+			  <div id="day4_descr"></div>
+			</div>
+          </div>
+		</div>  
+        <div class="item">
+          <img id="day5_img" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <div class="city">Please allow browser to use your geolocation</div>
+              <div id="day5_time"></div>
+			  <div id="day5_icon"></div>
+              <div id="day5_temp"></div>
+			  <div id="day5_descr"></div>
+			</div>
           </div>
         </div>
         <div class="item">
-          <img class="sixth-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Sixth slide">
+          <img id="day6_img" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
+              <div class="city">Please allow browser to use your geolocation</div>
+              <div id="day6_time"></div>
+			  <div id="day6_icon"></div>
+              <div id="day6_temp"></div>
+			  <div id="day6_descr"></div>
+			</div>
           </div>
         </div>
         <div class="item">
-          <img class="seventh-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Seventh slide">
+          <img id="day7_img" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
+              <div class="city">Please allow browser to use your geolocation</div>
+              <div id="day7_time"></div>
+			  <div id="day7_icon"></div>
+              <div id="day7_temp"></div>
+			  <div id="day7_descr"></div>
+			</div>
           </div>
         </div>
-		
+
 	  </div> 
 	  
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -194,7 +185,7 @@
     <div class="container marketing">
       <!-- FOOTER -->
       <footer>
-        <p>&copy; 2015 Bohdan Pakholok &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2015 <a href="http://vk.com/bpakholok">Bohdan Pakholok</a></p>
       </footer>
 
     </div><!-- /.container -->
@@ -204,13 +195,16 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <!-- <script src="assets/js/holder.min.js"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 	
-<!-- Normalize slide height
-<script type="text/javascript">carouselNormalization()</script> -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+	<script src="assets/js/weather.script.js"></script>
+	
+
+	
   </body>
 </html>
