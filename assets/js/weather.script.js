@@ -71,7 +71,7 @@
 });
 
 
-/* form validation plugin */
+/* form validation plugin 
 $.fn.goValidate = function() {
     var $form = this,
         $inputs = $form.find('input:text');
@@ -148,16 +148,16 @@ $.fn.goValidate = function() {
   
     $form.submit(function(e) {
       
-        $inputs.each(function() { /* test each input */
+        $inputs.each(function() { /* test each input 
         	if ($(this).is('.required') || $(this).hasClass('invalid')) {
             	showError($(this));
         	}
     	});
-        if ($form.find('input.invalid').length) { /* form is not valid */
+        if ($form.find('input.invalid').length) { /* form is not valid 
         	e.preventDefault();
             $('#form-error').toggleClass('hide');
         }
     });
     return this;
 };
-$('form').goValidate();
+$('form').goValidate();*/
