@@ -96,3 +96,6 @@ margin-bottom:180px;
 footer p {
 margin:0;
 }
+.modal-body {
+overflow: hidden;
+}
