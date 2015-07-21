@@ -70,6 +70,7 @@
     }
 });
 
+
 /* form validation plugin */
 $.fn.goValidate = function() {
     var $form = this,
